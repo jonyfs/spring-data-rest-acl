@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="br.com.jonyfs.domain" v="2.7" sm="false" xs="false" id="_14816631732791" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="UserPK" abs="false" class="User" v="true" minimized="false" rootElement="_14816631732791" id="_1481663183798">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="username" ft="false" id="_14816633724694">
+                <jpa:bv>
+                    <jpa:nn/>
+                    <jpa:si ma="50"/>
+                </jpa:bv>
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true" length="100" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" ft="false" id="_14816634484985">
+                <jpa:bv/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="100" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="enabled" id="_14816634925986">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" connected-entity-id="_1481663659318" connected-attribute-id="_148166396315918" v="true" name="groupses" id="_148166396316019">
+                <jpa:bv/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14816631839042">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="User.findAll">
+            <jpa:query>Select e from User e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByUsername">
+            <jpa:query>Select u from User u where u.username=:username</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByPassword">
+            <jpa:query>Select u from User u where u.password=:password</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByEnabled">
+            <jpa:query>Select u from User u where u.enabled=:enabled</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="AuthorityPK" abs="false" class="Authority" v="true" minimized="false" rootElement="_14816631732791" id="_1481663526466">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_14816635767339">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-many own="true" collection-type="java.util.List" connected-entity-id="_1481663659318" connected-attribute-id="_148166389375217" v="true" name="groupses" id="_148166389375116">
+                <jpa:bv/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_14816635264677">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Authority.findAll">
+            <jpa:query>Select e from Authority e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Authority.findByName">
+            <jpa:query>Select a from Authority a where a.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_148166365932013" xre="false" compositePrimaryKeyClass="GroupsPK" abs="false" class="Groups" v="true" minimized="false" rootElement="_14816631732791" id="_1481663659318">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_148166375188815">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-many collection-type="java.util.List" connected-entity-id="_1481663526466" connected-attribute-id="_148166389375116" v="true" name="authorities" id="_148166389375217">
+                <jpa:bv/>
+            </jpa:many-to-many>
+            <jpa:many-to-many own="true" collection-type="java.util.List" connected-entity-id="_1481663183798" connected-attribute-id="_148166396316019" v="true" name="users" id="_148166396315918">
+                <jpa:bv/>
+            </jpa:many-to-many>
+            <jpa:id attribute-type="Long" v="true" name="id" id="_148166365932013">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Groupses.findAll">
+            <jpa:query>Select e from Groupses e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Groupses.findByName">
+            <jpa:query>Select g from Groupses g where g.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyType="D" compositePrimaryKeyClass="LoginPK" abs="false" class="Login" v="true" minimized="false" rootElement="_14816631732791" id="_1481664028140">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="token" id="_148166408113823">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="lastUsed" id="_148166409322624">
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="true" connected-entity-id="_1481663183798" v="true" name="user" id="_148166426904526">
+                <jpa:bv/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Long" v="true" name="series" id="_148166402814120">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Login.findAll">
+            <jpa:query>Select e from Login e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Login.findBySeries">
+            <jpa:query>Select l from Login l where l.series=:series</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Login.findByToken">
+            <jpa:query>Select l from Login l where l.token=:token</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Login.findByLastUsed">
+            <jpa:query>Select l from Login l where l.lastUsed=:lastUsed</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
+ * This file was generated by the JPA Modeler
+ */</jpa:snp>
+    <jpa:inf e="true" n="java.io.Serializable"/>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+    </jpa:c>
+    <jpa:diagram>
+        <plane elementRef="_14816631732791">
+            <shape elementRef="_1481663183798">
+                <Bounds x="296.0" y="22.0" width="128.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_1481663526466">
+                <Bounds x="627.0" y="124.0" width="147.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1481663659318">
+                <Bounds x="343.0" y="229.0" width="137.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1481664028140">
+                <Bounds x="82.0" y="146.0" width="128.0" height="147.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
